@@ -35,13 +35,13 @@
 
 # ossec-remoted won't run unless there's a record for a client.
 # We will add a record that allows connections from 127.0.0.1
-- name: Add keepalive client.keys
-  copy:
-    src=client.keys
-    dest=/var/ossec/etc
-    owner=root
-    group=ossec
-    mode=440
+- name: Add localhost to client.keys
+  lineinfile:
+    dest: /var/ossec/etc/client.keys
+    line: "1 keepalive 127.0.0.1 c817b1f839ee2bb6c3a5559f299775f9ece27be5d3e9011aa45cdf438852d076"
+    owner: root
+    group: ossec
+    mode: 440
 
 - template:
     src=ossec.conf
