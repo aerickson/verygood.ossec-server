@@ -48,6 +48,7 @@
     dest=/var/ossec/etc/ossec.conf
     owner=root
     group=ossec
+  notify: restart ossec
 
 - name: Copy init.d for authd
   copy:
