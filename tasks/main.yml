@@ -13,6 +13,15 @@
 - name: move directory
   command: mv /opt/wazuh-"{{ ossec_version }}" /opt/ossec-wazuh
 
+- name: copy additional rules
+  copy:
+    src: "{{ item }}"
+    dest: "/var/ossec/rules/{{ item | basename }}"
+    owner: root
+    group: ossec
+    mode: 0640
+  with_items: "{{ossec_additional_rules}}"
+
 - name: copy preloaded var file
   template:
     src=install-preloaded-vars.conf

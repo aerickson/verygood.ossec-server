@@ -108,6 +108,8 @@ ossec_decoders:
   - etc/ossec_decoders
   - etc/wazuh_decoders
 
+ossec_additional_rules: []
+
 ossec_rules:
   - rules_config.xml
   - pam_rules.xml
